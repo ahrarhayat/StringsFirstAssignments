@@ -11,28 +11,39 @@ public class Part1 {
   //Start codon is ATG
   //Stop codon is TAA
   int startCodon= dna.indexOf("ATG");
+  String Result=null;
   
   if(startCodon==-1)//no ATG
   {
-      return "There is no gene";
+     Result="It's not a DNA";
+     if(dna.length()%3==0 )
+        {
+        Result="Gene: " +"DNA: "+dna;
+        return Result;
+        }
+     return Result;
+    
     }
     int stopCodon= dna.indexOf("TAA",startCodon+3);
-    if(stopCodon==-1)
+    if(stopCodon==-1)//no TAA
     {
-        return "There is no gene";
+        Result="It's not a DNA";
+        if(dna.length()%3==0 )
+        {
+        Result="Gene: " +"DNA: "+dna;
+        return Result;
+        }
+        return Result;
     }
     
-  String result=dna.substring(startCodon,stopCodon+3);
-  if(dna.length()%3==0)
-  {
-      return result;
-    }
-    return "There is no gene";
- 
-    }
+  Result="Gene: "+dna.substring(startCodon,stopCodon+3)+"  DNA: "+dna;
+  
+    return Result;
+}
+    
     public void testSimpleGene()
     {
-        String dna = "AGTAATGAGGTAGGAATAAGGAATT";
+        String dna = "AGTAATGAGGTAGGAATAGGATAA";
         String result=findSimpleGene(dna);
         System.out.println("Result: "+result);
         
