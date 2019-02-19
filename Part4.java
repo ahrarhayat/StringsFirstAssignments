@@ -9,25 +9,28 @@ public class Part4 {
     public String FindYoutube(URLResource url)
     {
        String id_text="\"" +"youtube.com"+"\"";
+       String results="null";
        for(String lines:url.lines())
        {
-           int start=lines.indexOf("\"",0);
+           lines.toLowerCase();
+           int start=lines.indexOf("youtube.com");
            int end=lines.lastIndexOf("\"",lines.length());
-           String results= "null";
+           
            if(start==-1)
            {
-               return "No youtube";
+               results= "No youtube";
                
             }
             else
             { results=lines;
                 
-                return results;
+                 
             }
            
            
         }
-       return null;
+        return results;
+       
        
         
     }
@@ -35,6 +38,7 @@ public class Part4 {
     {
         URLResource url = new URLResource("http://www.dukelearntoprogram.com/course2/data/manylinks.html");
         String results=FindYoutube(url);
+        System.out.println(results);
         
     }
     public static void main(String args [])
