@@ -1,4 +1,5 @@
 import edu.duke.*;
+import edu.duke.URLResource;
 /**
  * Write a description of Part4 here.
  * 
@@ -8,28 +9,26 @@ import edu.duke.*;
 public class Part4 {
     public String FindYoutube(URLResource url)
     {
-       String id_text="\"" +"youtube.com"+"\"";
+       
+      
+       String searchtext="youtube.com";
        String results="null";
-       for(String lines:url.lines())
+       for(String words:url.words())
        {
-           lines.toLowerCase();
-           int start=lines.indexOf("youtube.com");
-           int end=lines.lastIndexOf("\"",lines.length());
-           
-           if(start==-1)
+          String itemLower= words.toLowerCase();
+          int pos= itemLower.indexOf("youtube.com");
+         
+           if(pos!=-1)
            {
-               results= "No youtube";
-               
+               int beg = itemLower.lastIndexOf("\"",pos);
+               int end = itemLower.indexOf("\"",pos+1);
+               System.out.println(itemLower.substring(beg+1,end));
             }
-            else
-            { results=lines;
-                
-                 
-            }
+            
            
            
         }
-        return results;
+        return "";
        
        
         
@@ -37,6 +36,7 @@ public class Part4 {
     public void test()
     {
         URLResource url = new URLResource("http://www.dukelearntoprogram.com/course2/data/manylinks.html");
+     
         String results=FindYoutube(url);
         System.out.println(results);
         
