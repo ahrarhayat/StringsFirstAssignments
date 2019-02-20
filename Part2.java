@@ -11,8 +11,8 @@ public class Part2 {
   //Start codon is ATG
   //Stop codon is TAA
   String Result="DNA: "+dna;
-  if(dna.length()%3==0 )
-        {
+  String Gene="null";
+  
         
         
   int startCodonindex= dna.indexOf(startCodon);
@@ -29,8 +29,11 @@ public class Part2 {
         
         return Result;
     }
-    
-  Result="Gene: "+dna.substring(startCodonindex,stopCodonindex+3)+"  DNA: "+dna;
+ Gene=dna.substring(startCodonindex,stopCodonindex+3);
+ Result="Gene: "+Gene+"  DNA: "+dna;
+ if(Gene.length()%3==0 )
+{
+   System.out.println("Invalid gene");        
 }
 
     return Result;
